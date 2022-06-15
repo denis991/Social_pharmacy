@@ -25,6 +25,7 @@
 
 - Регистрация - логин,почта пароль, письмо с данными на почту (node emailer https://www.npmjs.com/package/nodemailer)
 <!-- npm i calendar -->
+<!-- npm i nodemailer -->
 - Внешний вид: зеленые тона. 
 
 
