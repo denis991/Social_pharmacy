@@ -9,9 +9,15 @@ module.exports = {
       },
       productBas_id: {
         type: Sequelize.INTEGER,
+        references: {
+          model: 'Products',
+        },
       },
       usesBas_id: {
         type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+        },
       },
       createdAt: {
         allowNull: false,
