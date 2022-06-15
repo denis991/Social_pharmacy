@@ -1,14 +1,15 @@
 const router = require('express').Router();
-const { User } = require('../db/models');
-// Student
-const checkAuth = require('../middlewares/checkAuth');
+const bcrypt = require('bcrypt');
+const { Student, User } = require('../db/models');
+const { checkAuth } = require('../middlewares/checkAuth');
 
-router.route('/').get(async (req, res) => {
-  res.render('index', { userId: req.session.userId });
-});
+router.route('/')
+  .get(async (req, res) => {
+    const students = await Student.findAll();
+    res.render('index', { students });
+  });
 
-router
-  .route('/register') // регистрация
+router.route('/register')
   .get(checkAuth, async (req, res) => {
     res.render('register');
   })
@@ -17,7 +18,8 @@ router
       const { email, name, password } = req.body;
 
       if (email && name && password) {
-        await User.create({ email, name, password });
+        const hashPass = await bcrypt.hash(password, Number(process.env.SALTROUNDS));
+        await User.create({ email, name, password: hashPass });
         res.redirect('/');
       }
     } catch (err) {
@@ -26,8 +28,7 @@ router
     }
   });
 
-router // вход проверка
-  .route('/login')
+router.route('/login')
   .get(async (req, res) => {
     res.render('login');
   })
@@ -36,13 +37,12 @@ router // вход проверка
       const { email, password } = req.body;
 
       if (email && password) {
-        const user = await User.findOne({ where: { email, password } });
-        if (user) {
+        const user = await User.findOne({ where: { email } });
+        const passCheck = await bcrypt.compare(password, user.password);
+        if (user && passCheck) {
           req.session.userId = user.id;
           res.redirect('/');
-        } else {
-          res.redirect('/login');
-        }
+        } else { res.redirect('/login'); }
       }
     } catch (err) {
       console.log(err);
@@ -50,14 +50,15 @@ router // вход проверка
     }
   });
 
-router.route('/logout').get((req, res) => { // выход session
-  req.session.destroy((error) => {
-    if (error) {
-      console.error(error);
-      return res.sendStatus(500);
-    }
-    res.clearCookie('auth').redirect('/');
+router.route('/logout')
+  .get((req, res) => {
+    req.session.destroy((error) => {
+      if (error) {
+        console.error(error);
+        return res.sendStatus(500);
+      }
+      res.clearCookie('auth').redirect('/');
+    });
   });
-});
 
 module.exports = router;
