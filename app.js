@@ -51,7 +51,7 @@ app.use(express.urlencoded({ extended: true })); // подключаем мод�
 app.use(express.json()); // подключаем модуль для обработки данных из json
 app.use(checkSession);
 
-app.use('/',registrRouter);
+app.use('/', registrRouter);
 // app.use('/', indexRouter);
 // app.use('/products', productsRouter);
 // app.use('/users', usersRouter);

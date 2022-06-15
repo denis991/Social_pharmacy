@@ -1,14 +1,15 @@
 const router = require('express').Router();
+const bcrypt = require('bcrypt');
 const { User } = require('../db/models');
-// Student
-const checkAuth = require('../middlewares/checkAuth');
+const { checkAuth } = require('../middlewares/checkAuth');
 
 router.route('/').get(async (req, res) => {
+  // const students = await Student.findAll();
   res.render('index', { userId: req.session.userId });
 });
 
-router
-  .route('/register') // регистрация
+router // registr route
+  .route('/register')
   .get(checkAuth, async (req, res) => {
     res.render('register');
   })
@@ -17,7 +18,11 @@ router
       const { email, name, password } = req.body;
 
       if (email && name && password) {
-        await User.create({ email, name, password });
+        const hashPass = await bcrypt.hash(
+          password,
+          Number(process.env.SALTROUNDS)
+        );
+        await User.create({ email, name, password: hashPass });
         res.redirect('/');
       }
     } catch (err) {
@@ -26,7 +31,7 @@ router
     }
   });
 
-router // вход проверка
+router// вход проверка
   .route('/login')
   .get(async (req, res) => {
     res.render('login');
@@ -36,8 +41,9 @@ router // вход проверка
       const { email, password } = req.body;
 
       if (email && password) {
-        const user = await User.findOne({ where: { email, password } });
-        if (user) {
+        const user = await User.findOne({ where: { email } });
+        const passCheck = await bcrypt.compare(password, user.password);
+        if (user && passCheck) {
           req.session.userId = user.id;
           res.redirect('/');
         } else {
@@ -50,7 +56,7 @@ router // вход проверка
     }
   });
 
-router.route('/logout').get((req, res) => { // выход session
+router.route('/logout').get((req, res) => {
   req.session.destroy((error) => {
     if (error) {
       console.error(error);
@@ -61,4 +67,3 @@ router.route('/logout').get((req, res) => { // выход session
 });
 
 module.exports = router;
-!!
