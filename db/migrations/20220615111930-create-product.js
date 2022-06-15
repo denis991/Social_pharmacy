@@ -14,7 +14,7 @@ module.exports = {
       describe: {
         type: Sequelize.TEXT
       },
-      prise: {
+      price: {
         type: Sequelize.INTEGER
       },
       user_id: {

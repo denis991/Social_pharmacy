@@ -4,7 +4,8 @@
   "description": "Добрый день! приветствуем вас в нашей социальной аптеке!",
   "main": "index.js",
   "scripts": {
-    "test": "node app.js"
+    "test": "node app.js",
+    "dev": "nodemon app.js --ignore sessions"
   },
   "repository": {
     "type": "git",
