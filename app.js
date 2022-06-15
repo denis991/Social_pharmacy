@@ -15,7 +15,7 @@ const app = express(); // создаем приложение
 const PORT = process.env.PORT ?? 3000;
 // получаем порт из переменной окружения или присваиваем значение 3000
 
-// const indexRouter = require('./routes/index.routes');
+const registrRouter = require('./routes/registrRouter'); // подключаем роутер для регистрации
 // const usersRouter = require('./routes/users.routes'); // подключаем роутер users
 // const categoryRouter = require('./routes/category.routes'); //  подключаем роутер category
 // const productsRouter = require('./routes/products.routes'); // подключаем роутер products
@@ -50,6 +50,8 @@ app.use(express.static(path.join(process.env.PWD, 'public'))); // подключ
 app.use(express.urlencoded({ extended: true })); // подключаем модуль для обработки данных из форм
 app.use(express.json()); // подключаем модуль для обработки данных из json
 app.use(checkSession);
+
+app.use('/',registrRouter);
 // app.use('/', indexRouter);
 // app.use('/products', productsRouter);
 // app.use('/users', usersRouter);
