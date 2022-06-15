@@ -1,0 +1,36 @@
+{
+  "name": "handlebars-client-challenge",
+  "version": "1.0.0",
+  "description": "## Введение В этом задании вам предстоит создать `Express`-приложение с нуля. ## Releases ### Release 0: ESLint, HelloWorld Инициализируйте npm, создайте с нуля приложение, которое умеет показывать текст \"Hello world!\" по пути `/`. Откройте ваше приложение в браузере и убедитесь, что оно работает. Проверьте, что ESLint ни на что не ругается. Сделайте коммит.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "nodemon index.js --ignore sessions"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KatyaGap/handlebars-client-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KatyaGap/handlebars-client-challenge/issues"
+  },
+  "homepage": "https://github.com/KatyaGap/handlebars-client-challenge#readme",
+  "devDependencies": {
+    "eslint": "^8.17.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "hbs": "^4.2.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.16",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.20.1",
+    "sequelize-cli": "^6.4.1"
+  }
+}

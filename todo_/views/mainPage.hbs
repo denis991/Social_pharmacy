@@ -1,0 +1,30 @@
+<main class='container'>
+  <h1>
+    ToDoList
+  </h1>
+  <div class='container'>
+    {{#each data}}
+      <ul id='busList'>
+        <li id='li-{{id}}'>
+          <span class='title'>{{this.title}}</span><button
+            data-edit={{id}}
+            class='edit-button'
+            type='click'
+          >edit</button><span class='status'>{{this.status}}</span>
+          <button data-change={{id}} class='change-button' type='click'>change
+            status</button>
+          <button
+            data-delete={{id}}
+            class='delete-button'
+            type='click'
+          >X</button>
+        </li>
+      </ul>
+    {{/each}}
+  </div>
+</main>
+<form id='form' name='busForm'>
+  <input class='text' type='text' name='title' placeholder='title' />
+  <input class='text' type='text' name='status' placeholder='status' />
+  <button class='add-button' type='submit'>add</button>
+</form>
