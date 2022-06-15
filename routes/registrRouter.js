@@ -23,7 +23,7 @@ router.route('/register')
         res.redirect('/');
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       res.redirect('/register');
     }
   });
@@ -45,7 +45,7 @@ router.route('/login')
         } else { res.redirect('/login'); }
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       res.redirect('/login');
     }
   });
@@ -54,7 +54,7 @@ router.route('/logout')
   .get((req, res) => {
     req.session.destroy((error) => {
       if (error) {
-        console.error(error);
+        // console.error(error);
         return res.sendStatus(500);
       }
       res.clearCookie('auth').redirect('/');
