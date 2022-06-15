@@ -10,7 +10,7 @@ const cors = require('cors');
 
 // const { locals } = require('./middlewares/locals');
 // app.use(locals);
-const bcrypt = require('bcrypt'); // шде будет подключаться модуль bcrypt паролей
+// const bcrypt = require('bcrypt'); // шде будет подключаться модуль bcrypt паролей
 const app = express(); // создаем приложение
 const PORT = process.env.PORT ?? 3000;
 // получаем порт из переменной окружения или присваиваем значение 3000
