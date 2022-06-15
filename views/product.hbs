@@ -1,13 +1,13 @@
-<form id="drug" action='post' >
-  <input type='text' placeholder='Название' />
-  <input type='text' placeholder='Описание' />
-  <label for=''>
-    <input type='text' placeholder='IMG' />
-    <a href='#' class='btn btn-primary'>Выбрать картинку</a>
+<form name='drug' action='post'>
+  <input name='title' type='text' placeholder='Название' />
+  <input name='describe' type='text' placeholder='Описание' />
+  <label for='img'>
+    <input name='img' type='text' placeholder='IMG' />
+    <button type="submit" href='#' class='btn btn-primary'>Выбрать картинку</button>
   </label>
-  <a href='#' class='btn btn-primary'>Добавить</a>
+  <button type="submit" href='#' class='btn btn-primary'>Добавить</button>
 </form>
-<div style="display: flex">
+<div style='display: flex'>
   <div>
     <div class='card' style='width: 18rem;'>
       <img
@@ -16,9 +16,8 @@
         alt='...'
       />
       <div class='card-body'>
-        <h5 class='card-title'>Card title</h5>
-        <p class='card-text'>Some quick example text to build on the card title
-          and make up the bulk of the card's content.</p>
+        <h5 class='card-title'>Парацетамол</h5>
+        <p class='card-text'>Лекарство от головы</p>
         <a href='#' class='btn btn-primary'>Изменить</a>
         <a href='#' class='btn btn-primary'>Удалить</a>
       </div>
@@ -32,9 +31,8 @@
         alt='...'
       />
       <div class='card-body'>
-        <h5 class='card-title'>Card title</h5>
-        <p class='card-text'>Some quick example text to build on the card title
-          and make up the bulk of the card's content.</p>
+        <h5 class='card-title'>Парацетамол</h5>
+        <p class='card-text'>Лекарство от температуры</p>
         <a href='#' class='btn btn-primary'>Изменить</a>
         <a href='#' class='btn btn-primary'>Удалить</a>
       </div>
