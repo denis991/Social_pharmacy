@@ -10,8 +10,6 @@ const cors = require('cors');
 const indexRouter = require('./routes/indexRouter');
 const productRouter = require('./routes/productRouter');
 
-
-
 const { checkSession } = require('./middlewares/checkAuth');
 // const { locals } = require('./middlewares/locals');
 // app.use(locals);
