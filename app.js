@@ -7,6 +7,10 @@ const cookieParser = require('cookie-parser'); // подключаем моду�
 const session = require('express-session'); // подключаем модуль express-session
 const FileStore = require('session-file-store')(session); // подключаем модуль session-file-store
 const cors = require('cors');
+const indexRouter = require('./routes/indexRouter');
+const productRouter = require('./routes/productRouter');
+
+
 
 // const { locals } = require('./middlewares/locals');
 // app.use(locals);
@@ -49,8 +53,9 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(process.env.PWD, 'public'))); // подключаем папку public
 app.use(express.urlencoded({ extended: true })); // подключаем модуль для обработки данных из форм
 app.use(express.json()); // подключаем модуль для обработки данных из json
+app.use('/', indexRouter);
+app.use('/', productRouter);
 
-// app.use('/', indexRouter);
 // app.use('/products', productsRouter);
 // app.use('/users', usersRouter);
 // app.use('/category', categoryRouter);
