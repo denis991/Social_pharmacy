@@ -33,3 +33,4 @@
 
 
 npx sequelize-cli db:migrate
+регистрация логин пароль письмо с данными на почту (node emailer https://www.npmjs.com/package/nodemailer)
