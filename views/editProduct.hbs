@@ -1,11 +1,12 @@
-<form name="formEditProduct">
+<form name="formEditProduct" id={{id}}>
   <div class='card' style='width: 18rem;'>
     <h2>{{name}}</h2>
-          <img src={{img}} class='card-img-top' alt='...' />
           <div class='card-body'>
-            <input class='card-title' placeholder="Название"></input>
-            <input class='card-text' placeholder="Описание"></input>
-            <input class='card-text' placeholder="Цена"></input>
-            <input style="display: inline;" class='card-text discount-price' placeholder="Цена со скидкой"></input>
-            <button type="click" href='#' data-id={{id}} class='btn btn-primary'>Сохранить изменения</button>
+            <input name='name'class='card-title' placeholder="Название"></input>
+            <input name='describe'class='card-text' placeholder="Описание"></input>
+            <input name='img' type='text' placeholder='IMG' />
+            <input name='price'class='card-text' placeholder="Цена"></input>
+            <input name='discount'style="display: inline;" class='card-text discount-price' placeholder="Цена со скидкой"></input>
+            <button type="submit" href='#' data-id={{id}} class='btn btn-primary'>Сохранить изменения</button>
 </form>
+<script src="/js/productRouteFront.js"></script>

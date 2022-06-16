@@ -48,27 +48,41 @@ router
         },
       });
       const { name } = product.dataValues;
-      res.render('editProduct', { name });
+      res.render('editProduct', { name, id });
+    } catch (error) {
+      res.json({ error });
+    }
+  })
+  .put(async (req, res, next) => {
+    try {
+      console.log("123", req.params);
+      console.log("body", req.body);
+      let { name, describe, price, discount, img } = req.body;
+      price = +price;
+      discount = +discount;
+      try {
+        console.log(name, describe, price, discount, img);
+        if (name && describe && price && discount && img) {
+          const prodEdit = await Product.update({
+            name,
+            describe,
+            price,
+            discount,
+            img,
+          }, {
+            where: {
+              id: req.params.id,
+            },
+          });
+          res.json(prodEdit);
+        }
+      } catch (error) {
+        console.log(error);
+        res.json({ error });
+      }
+      res.json({ name, describe, price, discount, img });
     } catch (error) {
       res.json({ error });
     }
   });
-// router
-// .route('/product/:id')
-//   .put(async (req, res, next) => {
-//     try {
-//       const name = await Product.findOne({ where: { name: req.params.name } });
-//       const describe = await Product.findOne({
-//         where: { describe: req.params.describe },
-//       });
-//       const price = await Product.findOne({ where: { price: req.params.price } });
-//       const discount = await Product.findOne({
-//         where: { discount: req.params.discount },
-//       });
-//       const img = await Product.findOne({ where: { img: req.params.img } });
-//       res.json({ name, describe, price, discount, img });
-//     } catch (error) {
-//       res.json({ error });
-//     }
-//   });
 module.exports = router;
