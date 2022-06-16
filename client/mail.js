@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport(
   // в котором каждое сообщение используется по умолчанию
   {
     from: 'Социальная аптека "Подорожник" <socialpharmacy@mail.ru>', //  from это адрес почтового адреса с которого будем отправлять клиенту сообщение
-  }
+  },
 );
 
 const mailer = (message) => {
