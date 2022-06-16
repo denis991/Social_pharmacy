@@ -1,7 +1,5 @@
 /* eslint no-console: 0 */
 
-'use strict';
-
 const nodemailer = require('../lib/nodemailer');
 
 // Generate SMTP service account from ethereal.email
