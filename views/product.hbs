@@ -1,4 +1,4 @@
-<div style='display: flex'>
+{{!-- <div style='display: flex'>
   <form name='drug' action='' method="POST">
     <input name='title' type='text' placeholder='Название' />
     <input name='describe' type='text' placeholder='Описание' />
@@ -7,7 +7,19 @@
     </label>
     <button type="submit"  class='btn btn-primary'>Добавить</button>
   </form>
-</div>
+</div> --}}
+
+<form name='drug' action='post'>
+  <input name='name' type='text' placeholder='Название' />
+  <input name='describe' type='text' placeholder='Описание' />
+  <input name='price' type='text' placeholder='Цена' />
+  <input name='discount' type='text' placeholder='Цена со скидкой' />
+  <label for='img'>
+    <input name='img' type='text' placeholder='IMG' />
+    <button type="submit" href='#' class='btn btn-primary'>Выбрать картинку</button>
+  </label>
+  <button type="submit" href='#' class='btn btn-primary'>Добавить</button>
+</form>
 
 <div style='display: flex'>
   <div>
@@ -18,6 +30,7 @@
       <div class='card-body'>
         <h5 class='card-title'>Парацетамол</h5>
         <p class='card-text'>Лекарство от головы</p>
+        <a href='#' class='btn btn-primary'>Купить</a>
         <a href='#' class='btn btn-primary'>Изменить</a>
         <a href='#' class='btn btn-primary'>Удалить</a>
       </div>
@@ -31,6 +44,7 @@
       <div class='card-body'>
         <h5 class='card-title'>Парацетамол</h5>
         <p class='card-text'>Лекарство от температуры</p>
+        <a href='#' class='btn btn-primary'>Купить</a>
         <a href='#' class='btn btn-primary'>Изменить</a>
         <a href='#' class='btn btn-primary'>Удалить</a>
       </div>

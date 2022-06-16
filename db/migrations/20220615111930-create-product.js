@@ -16,6 +16,9 @@ module.exports = {
       price: {
         type: Sequelize.INTEGER,
       },
+      discount: {
+        type: Sequelize.INTEGER,
+      },
       user_id: {
         type: Sequelize.INTEGER,
       },
@@ -33,10 +36,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-      }
+      },
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Products');
-  }
+  },
 };
