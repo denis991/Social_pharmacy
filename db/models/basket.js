@@ -15,4 +15,5 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Basket',
   });
   return Basket;
+
 };
