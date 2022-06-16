@@ -1,139 +1,163 @@
-/* eslint no-console: 0 */
+const nodemailer = require('nodemailer');
 
-'use strict';
+const transporter = nodemailer.createTransport(
+  { // настройки почтового сервера SMTP, надо гуглить настройки почтовых сервисов
+    // ethereal.email для тестирования, потом заменяем на рельный почтовый сервер
+    host: 'smtp.mail.ru', // адрес smtp сервера для отправки email
+    port: 465, // порт - почтового сервера через который будет отправлятся email
+    secure: true, // true for 465, false for other ports
+    auth: {
+      user: 'socialpharmacy@mail.ru', // логин почтового аккаунта
+      pass: 'nXk9Pg4hhZvs4D4hxw1M', // Nodesocial1 пароль почтового аккаунта
+    },
+  },
+  // передаем вторым параметром объект содержащий поля,
+  // в котором каждое сообщение используется по умолчанию
+  {
+    from: 'Социальная аптека "Подорожник" <socialpharmacy@mail.ru>', //  from это адрес почтового адреса с которого будем отправлять клиенту сообщение
+  },
+);
 
-const nodemailer = require('../lib/nodemailer');
+const mailer = message => {
+  transporter.sendMail(message, (err, info) => {
+    if (err) return console.log(err);
+    console.log('Email sent: ', info);
+  });
+};
+
+module.exports = mailer;
 
 // Generate SMTP service account from ethereal.email
-nodemailer.createTestAccount((err, account) => {
-  if (err) {
-    console.error('Failed to create a testing account');
-    console.error(err);
-    return process.exit(1);
-  }
+// nodemailer.createTestAccount((err, account) => {
 
-  console.log('Credentials obtained, sending message...');
+//   if (err) {
+//     console.error('Failed to create a testing account');
+//     console.error(err);
+//     return process.exit(1);
+//   }
 
-  // NB! Store the account object values somewhere if you want
-  // to re-use the same account for future mail deliveries
+//   console.log('Credentials obtained, sending message...');
 
-  // Create a SMTP transporter object
-  let transporter = nodemailer.createTransport(
-    {
-      host: account.smtp.host,
-      port: account.smtp.port,
-      secure: account.smtp.secure,
-      auth: {
-        user: account.user,
-        pass: account.pass,
-      },
-      logger: true,
-      transactionLog: true, // include SMTP traffic in the logs
-    },
-    {
-      // default message fields
+//   // NB! Store the account object values somewhere if you want
+//   // to re-use the same account for future mail deliveries
 
-      // sender info
-      from: 'Nodemailer <example@nodemailer.com>',
-      headers: {
-        'X-Laziness-level': 1000, // just an example header, no need to use this
-      },
-    }
-  );
+//   // Create a SMTP transporter object
+//   let transporter = nodemailer.createTransport(
+//     {
+//       host: account.smtp.host,
+//       port: account.smtp.port,
+//       secure: account.smtp.secure,
+//       auth: {
+//         user: account.user,
+//         pass: account.pass,
+//       },
+//       logger: true,
+//       transactionLog: true, // include SMTP traffic in the logs
+//     },
+//     {
+//       // default message fields
 
-  // Message object
-  let message = {
-    // Comma separated list of recipients
-    to: 'Nodemailer <example@nodemailer.com>',
+//       // sender info
+//       from: 'Nodemailer <example@nodemailer.com>',
+//       headers: {
+//         'X-Laziness-level': 1000, // just an example header, no need to use this
+//       },
+//     }
+//   );
 
-    // Subject of the message
-    subject: 'Nodemailer is unicode friendly ✔' + Date.now(),
+//   // Message object
+//   let message = {
+//     // Comma separated list of recipients
+//     to: 'Nodemailer <example@nodemailer.com>',
 
-    // plaintext body
-    text: 'Hello to myself!',
+//     // Subject of the message
+//     subject: 'Nodemailer is unicode friendly ✔' + Date.now(),
 
-    // HTML body
-    html: `<p><b>Hello</b> to myself <img src="cid:note@example.com"/></p>
-        <p>Here's a nyan cat for you as an embedded attachment:<br/><img src="cid:nyan@example.com"/></p>`,
+//     // plaintext body
+//     text: 'Hello to myself!',
 
-    // AMP4EMAIL
-    amp: `<!doctype html>
-        <html ⚡4email>
-          <head>
-            <meta charset="utf-8">
-            <style amp4email-boilerplate>body{visibility:hidden}</style>
-            <script async src="https://cdn.ampproject.org/v0.js"></script>
-            <script async custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js"></script>
-          </head>
-          <body>
-            <p><b>Hello</b> to myself <amp-img src="https://cldup.com/P0b1bUmEet.png" width="16" height="16"/></p>
-            <p>No embedded image attachments in AMP, so here's a linked nyan cat instead:<br/>
-              <amp-anim src="https://cldup.com/D72zpdwI-i.gif" width="500" height="350"/></p>
-          </body>
-        </html>`,
+//     // HTML body
+//     html: `<p><b>Hello</b> to myself <img src="cid:note@example.com"/></p>
+//         <p>Here's a nyan cat for you as an embedded attachment:<br/><img src="cid:nyan@example.com"/></p>`,
 
-    // An array of attachments
-    attachments: [
-      // String attachment
-      {
-        filename: 'notes.txt',
-        content: 'Some notes about this e-mail',
-        contentType: 'text/plain', // optional, would be detected from the filename
-      },
+//     // AMP4EMAIL
+//     amp: `<!doctype html>
+//         <html ⚡4email>
+//           <head>
+//             <meta charset="utf-8">
+//             <style amp4email-boilerplate>body{visibility:hidden}</style>
+//             <script async src="https://cdn.ampproject.org/v0.js"></script>
+//             <script async custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js"></script>
+//           </head>
+//           <body>
+//             <p><b>Hello</b> to myself <amp-img src="https://cldup.com/P0b1bUmEet.png" width="16" height="16"/></p>
+//             <p>No embedded image attachments in AMP, so here's a linked nyan cat instead:<br/>
+//               <amp-anim src="https://cldup.com/D72zpdwI-i.gif" width="500" height="350"/></p>
+//           </body>
+//         </html>`,
 
-      // Binary Buffer attachment
-      {
-        filename: 'image.png',
-        content: Buffer.from(
-          'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/' +
-            '//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U' +
-            'g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC',
-          'base64'
-        ),
+//     // An array of attachments
+//     attachments: [
+//       // String attachment
+//       {
+//         filename: 'notes.txt',
+//         content: 'Some notes about this e-mail',
+//         contentType: 'text/plain', // optional, would be detected from the filename
+//       },
 
-        cid: 'note@example.com', // should be as unique as possible
-      },
+//       // Binary Buffer attachment
+//       {
+//         filename: 'image.png',
+//         content: Buffer.from(
+//           'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/' +
+//           '//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U' +
+//           'g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC',
+//           'base64'
+//         ),
 
-      // File Stream attachment
-      {
-        filename: 'nyan cat ✔.gif',
-        path: __dirname + '/assets/nyan.gif',
-        cid: 'nyan@example.com', // should be as unique as possible
-      },
-    ],
+//         cid: 'note@example.com', // should be as unique as possible
+//       },
 
-    list: {
-      // List-Help: <mailto:admin@example.com?subject=help>
-      help: 'admin@example.com?subject=help',
+//       // File Stream attachment
+//       {
+//         filename: 'nyan cat ✔.gif',
+//         path: __dirname + '/assets/nyan.gif',
+//         cid: 'nyan@example.com', // should be as unique as possible
+//       },
+//     ],
 
-      // List-Unsubscribe: <http://example.com> (Comment)
-      unsubscribe: [
-        {
-          url: 'http://example.com/unsubscribe',
-          comment: 'A short note about this url',
-        },
-        'unsubscribe@example.com',
-      ],
+//     list: {
+//       // List-Help: <mailto:admin@example.com?subject=help>
+//       help: 'admin@example.com?subject=help',
 
-      // List-ID: "comment" <example.com>
-      id: {
-        url: 'mylist.example.com',
-        comment: 'This is my awesome list',
-      },
-    },
-  };
+//       // List-Unsubscribe: <http://example.com> (Comment)
+//       unsubscribe: [
+//         {
+//           url: 'http://example.com/unsubscribe',
+//           comment: 'A short note about this url',
+//         },
+//         'unsubscribe@example.com',
+//       ],
 
-  transporter.sendMail(message, (error, info) => {
-    if (error) {
-      console.log('Error occurred');
-      console.log(error.message);
-      return process.exit(1);
-    }
+//       // List-ID: "comment" <example.com>
+//       id: {
+//         url: 'mylist.example.com',
+//         comment: 'This is my awesome list',
+//       },
+//     },
+//   };
 
-    console.log('Message sent successfully!');
-    console.log(nodemailer.getTestMessageUrl(info));
+//   transporter.sendMail(message, (error, info) => {
+//     if (error) {
+//       console.log('Error occurred');
+//       console.log(error.message);
+//       return process.exit(1);
+//     }
 
-    // only needed when using pooled connections
-    transporter.close();
-  });
-});
+//     console.log('Message sent successfully!');
+//     console.log(nodemailer.getTestMessageUrl(info));
+
+//     // only needed when using pooled connections
+//     transporter.close();
+//   });
+// });
