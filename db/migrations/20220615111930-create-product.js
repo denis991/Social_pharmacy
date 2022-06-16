@@ -19,6 +19,9 @@ module.exports = {
       discount: {
         type: Sequelize.INTEGER,
       },
+      img: {
+        type: Sequelize.TEXT,
+      },
       user_id: {
         type: Sequelize.INTEGER,
       },
