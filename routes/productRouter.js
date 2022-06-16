@@ -55,25 +55,28 @@ router
   })
   .put(async (req, res, next) => {
     try {
-      console.log("123", req.params);
-      console.log("body", req.body);
+      console.log('123', req.params);
+      console.log('body', req.body);
       let { name, describe, price, discount, img } = req.body;
       price = +price;
       discount = +discount;
       try {
         console.log(name, describe, price, discount, img);
         if (name && describe && price && discount && img) {
-          const prodEdit = await Product.update({
-            name,
-            describe,
-            price,
-            discount,
-            img,
-          }, {
-            where: {
-              id: req.params.id,
+          const prodEdit = await Product.update(
+            {
+              name,
+              describe,
+              price,
+              discount,
+              img,
             },
-          });
+            {
+              where: {
+                id: req.params.id,
+              },
+            }
+          );
           res.json(prodEdit);
         }
       } catch (error) {
