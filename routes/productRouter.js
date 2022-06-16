@@ -28,7 +28,6 @@ router
 router
   .route('/product/:id')
   .delete(async (req, res, next) => {
-    console.log(req.params.id);
     try {
       const delProd = await Product.destroy({
         where: {
@@ -39,5 +38,37 @@ router
     } catch (error) {
       res.json({ error });
     }
+  })
+  .get(async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const product = await Product.findOne({
+        where: {
+          id,
+        },
+      });
+      const { name } = product.dataValues;
+      res.render('editProduct', { name });
+    } catch (error) {
+      res.json({ error });
+    }
   });
+// router
+// .route('/product/:id')
+//   .put(async (req, res, next) => {
+//     try {
+//       const name = await Product.findOne({ where: { name: req.params.name } });
+//       const describe = await Product.findOne({
+//         where: { describe: req.params.describe },
+//       });
+//       const price = await Product.findOne({ where: { price: req.params.price } });
+//       const discount = await Product.findOne({
+//         where: { discount: req.params.discount },
+//       });
+//       const img = await Product.findOne({ where: { img: req.params.img } });
+//       res.json({ name, describe, price, discount, img });
+//     } catch (error) {
+//       res.json({ error });
+//     }
+//   });
 module.exports = router;

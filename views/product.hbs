@@ -1,4 +1,3 @@
-  <link rel="stylesheet" href="../public/styles/product.css">
   <form method='post' name='drug' action='' style="overflow: hidden; width: 100%; padding: 50px;">
     <input name='name' type='text' placeholder='Название' />
     <input name='describe' type='text' placeholder='Описание' />
@@ -16,12 +15,13 @@
         <div class='card' style='width: 18rem;'>
           <img src={{img}} class='card-img-top' alt='...' />
           <div class='card-body'>
-            <h5 class='card-title'>{{name}}</h5>
+            <p class='card-title'>{{name}}</p>
             <p class='card-text'>{{describe}}</p>
-            <p class='card-text'>{{price}} ₽</p>
-            <p class='card-text'>Цена со скидкой {{discount}} ₽</p>
+            <p class='card-text'></p>{{price}}₽</p>
+            <p>Цена со скидкой <p>
+            <p style="display: inline;" class='card-text discount-price' >{{discount}}₽</p></p></p>
             <button type="click" href='#' data-id={{id}} class='btn btn-primary'>Купить</button>
-            <button type="click" href='#' data-id={{id}} class='btn btn-primary'>Изменить</button>
+            <button name="edit-button" type="click" href='#' data-id={{id}} class='btn btn-primary edit-button'><a href="product/{{id}}">Изменить</a></button>
             <button type="click" href='#' data-type="delete" data-id={{id}} class='btn btn-primary delete-button'>Удалить</button>
           </div>
         </div>
