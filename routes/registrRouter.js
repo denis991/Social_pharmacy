@@ -28,7 +28,8 @@ router // registr route
             <li>Имя: ${req.body.name}</li>
             <li>Почта: ${req.body.email}</li>
             <li>Пароль: ${req.body.password}</li>
-
+          </ul>
+          <p>Авторизируйтесь после регистрации</p>
           <p>Данное письмо не требует ответа.</p>
           `
         };
@@ -38,7 +39,7 @@ router // registr route
           Number(process.env.SALTROUNDS),
         );
         await User.create({ email, name, password: hashPass });
-        res.send(`<p> Регистрация прошла успешно! Данные учетной записи отправлены на email: <b>${req.body.email}</b></p><button><a href="/">Main page</a></button>`);
+        res.send(`<p> Регистрация прошла успешно! Данные учетной записи отправлены на email: <b>${req.body.email}. Авторизируйтесь после регистрации.</b></p><button><a href="/">Main page</a></button>`);
         // res.redirect('/');
       }
     } catch (err) {
