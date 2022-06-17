@@ -1,7 +1,8 @@
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport(
-  { // настройки почтового сервера SMTP, надо гуглить настройки почтовых сервисов
+  {
+    // настройки почтового сервера SMTP, надо гуглить настройки почтовых сервисов
     // ethereal.email для тестирования, потом заменяем на рельный почтовый сервер
     host: 'smtp.mail.ru', // адрес smtp сервера для отправки email
     port: 465, // порт - почтового сервера через который будет отправлятся email
@@ -18,7 +19,7 @@ const transporter = nodemailer.createTransport(
   },
 );
 
-const mailer = message => {
+const mailer = (message) => {
   transporter.sendMail(message, (err, info) => {
     if (err) return console.log(err);
     console.log('Email sent: ', info);
