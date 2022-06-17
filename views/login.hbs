@@ -1,35 +1,47 @@
+<link rel='stylesheet' href='./css/reg.css' />
+<form method='POST' action='/login'>
 
-<form method="POST" action="/login">
-
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  <div class='mb-3'>
+    <label for='exampleInputEmail1' class='form-label'>Email address</label>
+    <input
+      type='email'
+      name='email'
+      class='form-control'
+      id='exampleInputEmail1'
+      aria-describedby='emailHelp'
+    />
   </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+  <div class='mb-3'>
+    <label for='exampleInputPassword1' class='form-label'>Password</label>
+    <input
+      type='password'
+      name='password'
+      class='form-control'
+      id='exampleInputPassword1'
+    />
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-  
-</form>
+  <button type='submit' class='btn btn-primary'>Submit</button>
 
- <div class="login-box">
+  {{! <div class='login-box'>
     <h2>Login</h2>
     <form>
-      <div class="user-box">
-        <input type="text" name="" required="">
+      <div class='user-box'>
+        <input type='text' name='' required='' />
         <label>Username</label>
       </div>
-      <div class="user-box">
-        <input type="password" name="" required="">
+      <div class='user-box'>
+        <input type='password' name='' required='' />
         <label>Password</label>
       </div>
-      <a href="#">
+      <a href='#'>
         <span></span>
         <span></span>
         <span></span>
         <span></span>
-        Submit
+
+        <button type='submit' class=''>Submit</button>
       </a>
     </form>
-  </div>
+  </div> }}
+
+</form>
