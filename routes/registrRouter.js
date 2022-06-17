@@ -61,6 +61,7 @@ router// вход проверка
         const passCheck = await bcrypt.compare(password, user.password);
         if (user && passCheck) {
           req.session.userId = user.id;
+          req.session.name = user.name;
           res.redirect('/');
         } else {
           res.redirect('/login');

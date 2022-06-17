@@ -12,7 +12,7 @@ const productRouter = require('./routes/productRouter');
 
 const registrRouter = require('./routes/registrRouter'); // подключаем роутер для регистрации
 
-const { checkSession } = require('./middlewares/checkAuth');
+const { checkSession, checkName } = require('./middlewares/checkAuth');
 // const { locals } = require('./middlewares/locals');
 // app.use(locals);
 // const bcrypt = require('bcrypt'); // шде будет подключаться модуль bcrypt паролей
@@ -54,6 +54,7 @@ app.use(express.static(path.join(process.env.PWD, 'public'))); // подключ
 app.use(express.urlencoded({ extended: true })); // подключаем модуль для обработки данных из форм
 app.use(express.json()); // подключаем модуль для обработки данных из json
 
+app.use(checkName);
 app.use(checkSession);
 
 app.use('/', indexRouter);
