@@ -29,7 +29,7 @@ router // registr route
             <li>Имя: ${req.body.name}</li>
             <li>Почта: ${req.body.email}</li>
             <li>Пароль: ${req.body.password}</li>
-          
+
           <p>Данное письмо не требует ответа.</p>
           `
         };
@@ -40,7 +40,7 @@ router // registr route
         );
         await User.create({ email, name, password: hashPass });
         res.send(`<p> Регистрация прошла успешно! Данные учетной записи отправлены на email: <b>${req.body.email}</b></p><button><a href="/">Main page</a></button>`);
-        // res.redirect('/sucсess');
+        // res.redirect('/');
       }
     } catch (err) {
       console.log(err);
