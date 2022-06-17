@@ -33,10 +33,10 @@ router // registr route
           <p>Данное письмо не требует ответа.</p>
           `
         };
-        mailer(message)
+        mailer(message);
         const hashPass = await bcrypt.hash(
           password,
-          Number(process.env.SALTROUNDS)
+          Number(process.env.SALTROUNDS),
         );
         await User.create({ email, name, password: hashPass });
         res.send(`<p> Регистрация прошла успешно! Данные учетной записи отправлены на email: <b>${req.body.email}</b></p><button><a href="/">Main page</a></button>`);

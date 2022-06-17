@@ -58,13 +58,14 @@ app.use('/', productRouter);
 app.use(checkSession);
 
 app.use('/', registrRouter);
-// app.use('/', indexRouter);
-// app.use('/products', productsRouter);
-// app.use('/users', usersRouter);
-// app.use('/category', categoryRouter);
+
+app.get('/calendar', (req, res) => {
+  res.render('calendar99');
+});
 
 app.use('/error', (req, res) => {
   res.status(404).send('404 Not Found');
 });
 
 app.listen(PORT, () => console.log('Server is awesome on', PORT));
+
