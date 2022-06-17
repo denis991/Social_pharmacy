@@ -4,16 +4,17 @@
   line-height: 1.2em;
   font-size: 15px;
   text-align: center;
+  background: white;
 }
 #calendar99 thead tr:last-child {
   font-size: small;
   color: rgb(85, 85, 85);
 }
 #calendar99 tbody td {
-  color: rgb(44, 86, 122);
+  color: rgb(246, 248, 250);
 }
 #calendar99 tbody td:nth-child(n+6), #calendar99 .holiday {
-  color: rgb(231, 140, 92);
+  color: rgb(255, 252, 250);
 }
 #calendar99 tbody td.today {
   outline: 3px solid red;

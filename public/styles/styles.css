@@ -1,0 +1,19 @@
+
+  .hover:hover {
+    content: attr(title);
+    text-overflow: unset;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: vertical;
+    line-clamp: unset;
+  }
+  .hover {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    line-clamp: 7;
+    box-orient: vertical;
+  }

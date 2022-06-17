@@ -23,7 +23,6 @@ router // registr route
           subject: 'Вы зарегистрировались!', // тема письма
           html: `
           <h2>Поздравляем, Вы успешно зарегистрировались на нашем сайте!</h2>
-          
           <i>Данные Вашей учетной записи:</i>
           <ul>
             <li>Имя: ${req.body.name}</li>
@@ -62,6 +61,7 @@ router// вход проверка
         const passCheck = await bcrypt.compare(password, user.password);
         if (user && passCheck) {
           req.session.userId = user.id;
+          req.session.name = user.name;
           res.redirect('/');
         } else {
           res.redirect('/login');
