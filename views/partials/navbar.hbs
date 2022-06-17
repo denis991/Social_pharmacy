@@ -1,9 +1,9 @@
-<nav class="navbar navbar-expand-lg bg-light ">
-  <div class="container-fluid" align="center">
-    <a class="navbar-brand" href="/"><img src="img/medical-logo-20753.jpg" alt="logo" width="100" height="100">
-      Социальная аптека "Подорожник"</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light bg-green" style="background-color: #2acc14af;">
+  <div class=" container-fluid" align="center">
+  <a class="navbar-brand" href="/"><img src="/img/1643600414_1-papik-pro-p-logotip-apteki-1.png" alt="logo" width="100" height="100">
+    Социальная аптека "Подорожник"</a>
+     <link rel="stylesheet" href="calendar99.css">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -19,27 +19,39 @@
             <li class="nav-item">
               <a class="nav-link" href="/calendar">Календарь</a>
             </li>
+          {{#unless userId}}
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Регистрация</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Авторизация</a>
+          </li>
+          {{/unless}}
 
-            {{#unless userId}}
-            <li class="nav-item">
-              <a class="nav-link" href="/register">Регистрация</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/login">Авторизация</a>
-            </li>
-            {{/unless}}
-
-            {{#if userId}}
-            <li class="nav-item">
-              <a class="nav-link">Привет, {{userId}}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/logout">Выход</a>
-            </li>
-            {{/if}}
-          </ul>
-        </div>
-    </div>
+          {{#if userId}}
+          <li class="nav-item">
+            <a class="nav-link">Привет, {{name}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Выход</a>
+          </li>
+          {{/if}}
+        </ul>
+      </div>
+  </div>
 </nav>
-
 <link rel="stylesheet" href="calendar99.css">
+
+
+
+
+
+
+
+        
+
+          
+         
+     
+          
+
