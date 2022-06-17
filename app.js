@@ -69,4 +69,5 @@ app.use('/error', (req, res) => {
   res.status(404).send('404 Not Found');
 });
 
-app.listen(PORT, () => console.log('Server is awesome on', PORT));
+app.listen(PORT, () =>
+  console.log(`Server is awesome on http://localhost:${PORT}`, PORT));
