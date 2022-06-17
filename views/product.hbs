@@ -1,3 +1,4 @@
+  {{#if (Admin userId)}}
   <form method='post' name='drug' action='' style="overflow: hidden; width: 100%; padding: 50px;">
     <input name='name' type='text' placeholder='Название' />
     <input name='describe' type='text' placeholder='Описание' />
@@ -8,6 +9,7 @@
     </label>
     <button type='submit' href='#' class='btn btn-primary'>Добавить</button>
   </form>
+  {{/if}}
   <div style="overflow: hidden; width: 100%;">
   <ol class='list container' style='margin: 40px; display: flex; display: grid; gap: 1.5rem; grid-auto-flow: row dense; grid-template-columns: repeat(5,.2fr); list-style-type: none;'>
     {{#each product}}
@@ -16,13 +18,15 @@
           <img src={{img}} class='card-img-top' alt='...' />
           <div class='card-body'>
             <p class='card-title'>{{name}}</p>
-            <p class='card-text'>{{describe}}</p>
+            <span class='card-text hover'>{{describe}}</span>
             <p class='card-text'></p>{{price}}₽</p>
             <p>Цена со скидкой <p>
             <p style="display: inline;" class='card-text discount-price' >{{discount}}₽</p></p></p>
             <button type="click" href='#' data-id={{id}} class='btn btn-primary'>Купить</button>
-            <button name="edit-button" type="click" href='#' data-id={{id}} class='btn btn-primary edit-button'><a href="/product/{{id}}">Изменить</a></button>
+            {{#if (Admin ../userId)}}
+            <button name="edit-button" type="click" href='#' data-id={{id}} class='btn btn-primary edit-button'><a style="color: #e1e2e3;" href="/product/{{id}}">Изменить</a></button>
             <button type="click" href='#' data-type="delete" data-id={{id}} class='btn btn-primary delete-button'>Удалить</button>
+            {{/if}}
           </div>
         </div>
       </li>
