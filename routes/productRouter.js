@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Product } = require('../db/models');
 
 router
-  .route('/product')
+  .route('/')
   .get(async (req, res) => {
     const product = await Product.findAll();
     res.render('product', { product });
@@ -26,7 +26,7 @@ router
     }
   });
 router
-  .route('/product/:id')
+  .route('/:id')
   .delete(async (req, res, next) => {
     try {
       const delProd = await Product.destroy({
@@ -55,37 +55,30 @@ router
   })
   .put(async (req, res, next) => {
     try {
-      console.log('123', req.params);
-      console.log('body', req.body);
       let { name, describe, price, discount, img } = req.body;
       price = +price;
       discount = +discount;
-      try {
-        console.log(name, describe, price, discount, img);
-        if (name && describe && price && discount && img) {
-          const prodEdit = await Product.update(
-            {
-              name,
-              describe,
-              price,
-              discount,
-              img,
+      if (name && describe && price && discount && img) {
+        const prodEdit = await Product.update(
+          {
+            name,
+            describe,
+            price,
+            discount,
+            img,
+          },
+          {
+            where: {
+              id: req.params.id,
             },
-            {
-              where: {
-                id: req.params.id,
-              },
-            }
-          );
-          res.json(prodEdit);
-        }
-      } catch (error) {
-        console.log(error);
-        res.json({ error });
+          },
+        );
+        return res.json(prodEdit);
       }
-      res.json({ name, describe, price, discount, img });
+      // res.json({ name, describe, price, discount, img });
     } catch (error) {
-      res.json({ error });
+      // res.json({ error });
+      console.log(error);
     }
   });
 module.exports = router;

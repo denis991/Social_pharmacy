@@ -23,9 +23,11 @@ module.exports = {
         type: Sequelize.TEXT,
       },
       user_id: {
+        allowNull: true,
         type: Sequelize.INTEGER,
       },
       category_id: {
+        allowNull: true,
         type: Sequelize.INTEGER,
         references: {
           model: 'Categories',
