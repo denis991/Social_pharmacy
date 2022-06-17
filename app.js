@@ -10,6 +10,8 @@ const cors = require('cors');
 const indexRouter = require('./routes/indexRouter');
 const productRouter = require('./routes/productRouter');
 
+const registrRouter = require('./routes/registrRouter'); // подключаем роутер для регистрации
+
 const { checkSession } = require('./middlewares/checkAuth');
 // const { locals } = require('./middlewares/locals');
 // app.use(locals);
@@ -17,8 +19,6 @@ const { checkSession } = require('./middlewares/checkAuth');
 const app = express(); // создаем приложение
 const PORT = process.env.PORT ?? 3000;
 // получаем порт из переменной окружения или присваиваем значение 3000
-
-const registrRouter = require('./routes/registrRouter'); // подключаем роутер для регистрации
 // const usersRouter = require('./routes/users.routes'); // подключаем роутер users
 // const categoryRouter = require('./routes/category.routes'); //  подключаем роутер category
 // const productsRouter = require('./routes/products.routes'); // подключаем роутер products
@@ -52,10 +52,11 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(process.env.PWD, 'public'))); // подключаем папку public
 app.use(express.urlencoded({ extended: true })); // подключаем модуль для обработки данных из форм
 app.use(express.json()); // подключаем модуль для обработки данных из json
-app.use('/', indexRouter);
-app.use('/', productRouter);
 
 app.use(checkSession);
+
+app.use('/', indexRouter);
+app.use('/product', productRouter);
 
 app.use('/', registrRouter);
 
