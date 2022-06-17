@@ -44,7 +44,7 @@ app.use(session(sessionConfig)); // инициализация сессии
 app.use(cookieParser()); // инициализация куки
 
 hbs.registerPartials(`${__dirname}/views/partials`); // подключаем партиллеры
-hbs.registerHelper('Admin', (role) => (role == 2)); // разграничение Admina
+hbs.registerHelper('Admin', (role) => (role == 1)); // разграничение Admina
 
 app.set('views', path.join(__dirname, 'views')); // подключаем папку views
 app.set('view engine', 'hbs'); // подключаем пайтон для отображения в браузере
