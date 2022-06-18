@@ -13,16 +13,11 @@ const productRouter = require('./routes/productRouter');
 const registrRouter = require('./routes/registrRouter'); // подключаем роутер для регистрации
 
 const { checkSession, checkName } = require('./middlewares/checkAuth');
-// const { locals } = require('./middlewares/locals');
-// app.use(locals);
+
 // const bcrypt = require('bcrypt'); // шде будет подключаться модуль bcrypt паролей
 const app = express(); // создаем приложение
 const PORT = process.env.PORT ?? 3000;
 // получаем порт из переменной окружения или присваиваем значение 3000
-// const usersRouter = require('./routes/users.routes'); // подключаем роутер users
-// const categoryRouter = require('./routes/category.routes'); //  подключаем роутер category
-// const productsRouter = require('./routes/products.routes'); // подключаем роутер products
-// const indexRouter = require('./routes/indexRouter'); // подключаем роутер index
 
 const sessionConfig = {
   name: 'auth', // имя cookie-файла
