@@ -1,11 +1,29 @@
-<form method="POST" action="/login">
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+<link rel='stylesheet' href='./css/reg.css' />
+<div class='container' style='color:white;'>
+  <div class='row justify-content-md-center'>
+    <div class='col-md-auto'>
+      <form method='POST' action='/login'>
+        <div class='mb-3'>
+          <label for='exampleInputEmail1' class="row justify-content-md-center" class='form-label'>Email address</label>
+          <input
+            type='email'
+            name='email'
+            class='form-control'
+            id='exampleInputEmail1'
+            aria-describedby='emailHelp'
+          />
+        </div>
+        <div class='mb-3'>
+          <label for='exampleInputPassword1' class="row justify-content-md-center" class='form-label'>Password</label>
+          <input
+            type='password'
+            name='password'
+            class='form-control'
+            id='exampleInputPassword1'
+          />
+        </div>
+        <button type='submit'  class='btn btn-primary'>Submit</button>
+      </form>
+    </div>
   </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>

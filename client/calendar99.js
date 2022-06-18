@@ -10,7 +10,7 @@
 // 22 | 23 | 24 | 25 | 26 | 27 | 28
 // 29 | 30 | 31 |  1 |  2 |  3 |  4
 
-function Calendar3(id, year, month) {
+function calendar99(id, year, month) {
   var Dlast = new Date(year, month + 1, 0).getDate(),
     D = new Date(year, month, Dlast),
     DNlast = D.getDay(),
@@ -80,14 +80,14 @@ function Calendar3(id, year, month) {
     '#' + id + ' option[value="' + new Date().getMonth() + '"]'
   ).style.color = 'rgb(220, 0, 0)'; // в выпадающем списке выделен текущий месяц
 }
-Calendar3('calendar3', new Date().getFullYear(), new Date().getMonth());
-document.querySelector('#calendar3').onchange = function Kalendar3() {
-  Calendar3(
-    'calendar3',
-    document.querySelector('#calendar3 input').value,
+calendar99('calendar99', new Date().getFullYear(), new Date().getMonth());
+document.querySelector('#calendar99').onchange = function Kalendar3() {
+  calendar99(
+    'calendar99',
+    document.querySelector('#calendar99 input').value,
     parseFloat(
-      document.querySelector('#calendar3 select').options[
-        document.querySelector('#calendar3 select').selectedIndex
+      document.querySelector('#calendar99 select').options[
+        document.querySelector('#calendar99 select').selectedIndex
       ].value
     )
   );

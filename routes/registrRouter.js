@@ -23,24 +23,23 @@ router // registr route
           subject: 'Вы зарегистрировались!', // тема письма
           html: `
           <h2>Поздравляем, Вы успешно зарегистрировались на нашем сайте!</h2>
-          
           <i>Данные Вашей учетной записи:</i>
           <ul>
             <li>Имя: ${req.body.name}</li>
             <li>Почта: ${req.body.email}</li>
             <li>Пароль: ${req.body.password}</li>
-          
+
           <p>Данное письмо не требует ответа.</p>
           `
         };
-        mailer(message)
+        mailer(message);
         const hashPass = await bcrypt.hash(
           password,
-          Number(process.env.SALTROUNDS)
+          Number(process.env.SALTROUNDS),
         );
         await User.create({ email, name, password: hashPass });
         res.send(`<p> Регистрация прошла успешно! Данные учетной записи отправлены на email: <b>${req.body.email}</b></p><button><a href="/">Main page</a></button>`);
-        // res.redirect('/sucсess');
+        // res.redirect('/');
       }
     } catch (err) {
       console.log(err);
@@ -62,6 +61,7 @@ router// вход проверка
         const passCheck = await bcrypt.compare(password, user.password);
         if (user && passCheck) {
           req.session.userId = user.id;
+          req.session.name = user.name;
           res.redirect('/');
         } else {
           res.redirect('/login');

@@ -10,8 +10,11 @@ const cors = require('cors');
 const indexRouter = require('./routes/indexRouter');
 const productRouter = require('./routes/productRouter');
 
-const { checkSession } = require('./middlewares/checkAuth');
+const registrRouter = require('./routes/registrRouter'); // подключаем роутер для регистрации
 
+const { checkSession, checkName } = require('./middlewares/checkAuth');
+// const { locals } = require('./middlewares/locals');
+// app.use(locals);
 // const bcrypt = require('bcrypt'); // шде будет подключаться модуль bcrypt паролей
 const app = express(); // создаем приложение
 const PORT = process.env.PORT ?? 3000;
@@ -39,6 +42,7 @@ app.use(session(sessionConfig)); // инициализация сессии
 app.use(cookieParser()); // инициализация куки
 
 hbs.registerPartials(`${__dirname}/views/partials`); // подключаем партиллеры
+hbs.registerHelper('Admin', (role) => (role == 1)); // разграничение Admina
 
 app.set('views', path.join(__dirname, 'views')); // подключаем папку views
 app.set('view engine', 'hbs'); // подключаем пайтон для отображения в браузере
@@ -47,19 +51,22 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(process.env.PWD, 'public'))); // подключаем папку public
 app.use(express.urlencoded({ extended: true })); // подключаем модуль для обработки данных из форм
 app.use(express.json()); // подключаем модуль для обработки данных из json
-app.use('/', indexRouter);
-app.use('/', productRouter);
 
+app.use(checkName);
 app.use(checkSession);
 
+app.use('/', indexRouter);
+app.use('/product', productRouter);
+
 app.use('/', registrRouter);
-// app.use('/', indexRouter);
-// app.use('/products', productsRouter);
-// app.use('/users', usersRouter);
-// app.use('/category', categoryRouter);
+
+app.get('/calendar', (req, res) => {
+  res.render('calendar99');
+});
 
 app.use('/error', (req, res) => {
   res.status(404).send('404 Not Found');
 });
 
-app.listen(PORT, () => console.log('Server is awesome on', PORT));
+app.listen(PORT, () =>
+  console.log(`Server is awesome on http://localhost:${PORT}`, PORT));
