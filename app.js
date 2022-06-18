@@ -19,6 +19,8 @@ const app = express(); // создаем приложение
 const PORT = process.env.PORT ?? 3000;
 // получаем порт из переменной окружения или присваиваем значение 3000
 
+// const registrRouter = require('./routes/registrRouter'); // подключаем роутер для регистрации
+
 const sessionConfig = {
   name: 'auth', // имя cookie-файла
   secret: 'catdog', // ключ для шифрования
