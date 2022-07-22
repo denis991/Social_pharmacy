@@ -11,3 +11,5 @@ npx sequelize-cli db:migrate:undo:all  для отката всех измене
 4. npm run dev или npm test (в терминале)
 5. перейти по адресу http://localhost:3000/ или http://127.0.0.1:3000/
 6. после первого входа на админку admin@mail.ru и пароль admin у вас добавляется доп функции в админке
+
+https://social-pharmacy.herokuapp.com
