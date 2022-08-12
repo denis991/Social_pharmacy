@@ -31,7 +31,7 @@
     "bcrypt": "^5.0.1",
     "bootstrap": "^5.2.0",
     "calendar": "^0.1.1",
-    "cheerio": "^1.0.0-rc.11",
+    "cheerio": "^1.0.0-rc.12",
     "cookie-parser": "^1.4.6",
     "core-js": "^3.24.1",
     "cors": "^2.8.5",
