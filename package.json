@@ -51,7 +51,7 @@
     "osmosis": "^1.1.10",
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.21.4",
+    "sequelize": "^6.23.0",
     "sequelize-cli": "^6.4.1",
     "session-file-store": "^1.5.0"
   }
