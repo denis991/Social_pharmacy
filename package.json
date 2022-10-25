@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node app.js",
     "start": "node app.js",
-    "dev": "nodemon app.js --ignore sessions"
+    "heroku-postbuild": "cd client && npm run start"
+   
   },
   "repository": {
     "type": "git",
@@ -33,7 +34,7 @@
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "hbs": "^4.2.0",
-    "morgan": "^1.10.0",
+
     "nodemailer": "^6.8.0",
     "pg": "^8.8.0",
     "sequelize": "^6.25.3",

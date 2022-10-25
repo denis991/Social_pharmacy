@@ -1,7 +1,9 @@
 require('dotenv').config(); // Load .env file
 const express = require('express'); // подключаем модуль express
 const path = require('path'); // подключаем модуль path
-const morgan = require('morgan'); // подключаем модуль morgan
+// const morgan = require('morgan'); // подключаем модуль morgan   
+ // "morgan": "^1.10.0",
+//  "dev": "nodemon app.js --ignore sessions"
 const hbs = require('hbs'); // подключаем модуль hbs
 const cookieParser = require('cookie-parser'); // подключаем модуль cookie-parser
 const session = require('express-session'); // подключаем модуль express-session
@@ -46,7 +48,7 @@ hbs.registerHelper('Admin', (role) => (role == 1)); // разграничени�
 app.set('views', path.join(__dirname, 'views')); // подключаем папку views
 app.set('view engine', 'hbs'); // подключаем пайтон для отображения в браузере
 
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 app.use(express.static(path.join(process.env.PWD, 'public'))); // подключаем папку public
 app.use(express.urlencoded({ extended: true })); // подключаем модуль для обработки данных из форм
 app.use(express.json()); // подключаем модуль для обработки данных из json
@@ -66,6 +68,9 @@ app.get('/calendar', (req, res) => {
 app.use('/error', (req, res) => {
   res.status(404).send('404 Not Found');
 });
+app.get('*', (req, res) => {
+  res.status(404).send('404 Not Found');;
+  });
 
 app.listen(PORT, () =>
   console.log(`Server is awesome on http://localhost:${PORT}`, PORT));
