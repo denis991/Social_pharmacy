@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node app.js",
-    "start": "node app.js",
-    "heroku-postbuild": "npm run start"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
