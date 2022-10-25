@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node app.js",
     "start": "node app.js",
-    "heroku-postbuild": "cd client && npm run start"
+    "heroku-postbuild": "npm run start"
    
   },
   "repository": {
