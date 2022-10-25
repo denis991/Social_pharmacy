@@ -52,7 +52,7 @@ e2e/*.map
 ### direnv ###
 .direnv
 .envrc
-
+.env_beta
 ### dotenv ###
 .env
 
