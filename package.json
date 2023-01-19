@@ -25,7 +25,7 @@
     "calendar": "^0.1.1",
     "cheerio": "^1.0.0-rc.12",
     "cookie-parser": "^1.4.6",
-    "core-js": "^3.26.0",
+    "core-js": "^3.27.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "env": "^0.0.2",
