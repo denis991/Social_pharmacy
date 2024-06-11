@@ -30,7 +30,7 @@
     "dotenv": "^16.0.3",
     "env": "^0.0.2",
     "express": "^4.18.2",
-    "express-session": "^1.17.3",
+    "express-session": "^1.18.0",
     "hbs": "^4.2.0",
 
     "nodemailer": "^6.8.0",
