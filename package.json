@@ -34,7 +34,7 @@
     "hbs": "^4.2.0",
 
     "nodemailer": "^6.8.0",
-    "pg": "^8.8.0",
+    "pg": "^8.12.0",
     "sequelize": "^6.25.3",
     "sequelize-cli": "^6.5.1",
     "session-file-store": "^1.5.0"
